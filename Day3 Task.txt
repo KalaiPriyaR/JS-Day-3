@@ -1,0 +1,42 @@
+//Compare two JSON of sameproperties without order
+var obj1 = { name: "person1", age: 5};
+var obj2 = { age: 5, name: "person"};
+var flag = true;
+for (var key in obj1)
+{
+if(obj1[key]!== obj2[key])
+{
+flag == false;
+}
+}
+console.log(flag);
+
+//display all rest countries flag  with API https://restcountries.com/v3.1/all
+
+const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v3.1/all'); 
+request.send(null);
+request.onload = function () {
+const response = JSON.parse(request.responseText); 
+console.log(response);
+for (var i = 0; i < response.length; i++) {
+  const { flag, } = response[i];
+  console.log(flag);
+  }
+}; 
+
+//display all rest countries name, region, sub regions & population with API https://restcountries.com/v3.1/all
+
+const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v3.1/all'); 
+request.send(null);
+request.onload = function () {
+const response = JSON.parse(request.responseText); 
+console.log(response);
+for (var country of response) 
+{
+const { capital, region, subregion, population} = country;
+console.log(capital, region, subregion, population);
+}
+
+}; 
